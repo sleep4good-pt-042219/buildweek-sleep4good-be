@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const secret = require('../config/credentials').jwtSecret;
 
-module.exports = (req, res, next) => {
+const restricted = (req, res, next) => {
   const token = req.headers.authorization;
 
   if (token) {
@@ -18,5 +18,6 @@ module.exports = (req, res, next) => {
   else {
     res.status(401).json({ message: 'User was not verified' });
   }
-  
-};
+}
+
+module.exports = restricted;

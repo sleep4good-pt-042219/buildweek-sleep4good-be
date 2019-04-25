@@ -7,7 +7,8 @@ const secret = require('./../config/credentials').jwtSecret;
 function generateToken(user) {
     const payload = {
       subject: user.id,
-      username: user.username
+      username: user.username,
+      userRole: user.role_id
     }
     const options = {
       expiresIn: '1d',

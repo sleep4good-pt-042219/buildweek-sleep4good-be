@@ -17,7 +17,7 @@ function getById(id) {
     .first();
 }
 
-async function insert(hotel) {
+function insert(hotel) {
   return db('hotels')
     .insert(hotel)
     .then(ids => {

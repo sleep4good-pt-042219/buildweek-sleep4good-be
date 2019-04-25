@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Users = require('./../../data/helpers/usersDbHelper');
 
-const restricted = require('./../../auth/restrictedMiddleware');
+const restricted = require('../../auth/restrictedMiddleware');
 
 router.get('/', restricted, async (req, res) => {
    try {
