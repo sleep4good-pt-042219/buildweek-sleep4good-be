@@ -1,5 +1,5 @@
 exports.seed = function(knex, Promise) {
-    return knex('users').insert([
+    return knex('hotels').insert([
       { name: 'Marry-a-lott',
         street_address: '123 City Street',
         city: 'Mainsville',
