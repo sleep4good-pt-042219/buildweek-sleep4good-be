@@ -6,8 +6,8 @@ const helmet = require('helmet');
 server.use(express.json(), cors(), helmet());
 
 const authRouter = require('./auth/authRouter')
-const usersRouter = require('./users/usersRouter')
-const hotelsRouter = require('./hotels/hotelsRouter')
+const usersRouter = require('./api/users/usersRouter')
+const hotelsRouter = require('./api/hotels/hotelsRouter')
 
 server.get('/', (req, res) => {
     res.status(200).json('Home Page up and running')
