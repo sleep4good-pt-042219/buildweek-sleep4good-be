@@ -13,9 +13,9 @@ router.get('/', restricted, async (req, res) => {
       else {
           res.status(404).json(`Users are not available.`)
       }
-  } catch (e) {
+    } catch (e) {
       res.status(500).json(e);
-  }
+    }
 });
 
 module.exports = router;
