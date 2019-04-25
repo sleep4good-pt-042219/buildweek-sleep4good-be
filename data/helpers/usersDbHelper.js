@@ -3,7 +3,8 @@ const db = require('../dbConfig.js');
 module.exports = {
   fetchAll,
   getById,
-  insert
+  insert,
+  findBy
 };
 
 function fetchAll() {
@@ -23,4 +24,6 @@ async function insert(user) {
       return getById(ids[0]);
     });
 }
-
+function findBy(filter) {
+    return db('users').where(filter);
+}
