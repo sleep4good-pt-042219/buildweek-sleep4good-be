@@ -52,6 +52,21 @@ router.put('/:id', restricted, async (req, res) => {
   }
 });
 
+router.delete('/:id', restricted, async (req, res) => {
+  const id = req.params.id
+  try {
+     const hotel = await Hotels.remove(id);
+
+     if (hotel) {
+         res.status(200).json('Hotel was removed');
+     }
+     else {
+         res.status(404).json(`This hotel is not available.`)
+     }
+   } catch (e) {
+     res.status(500).json(e);
+   }
+});
 router.post('/', restricted, authorization, async (req, res) => {
    try {
       const hotels = await Hotels.fetchAll();

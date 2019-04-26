@@ -5,6 +5,7 @@ module.exports = {
   getById,
   insert,
   update,
+  remove,
   findBy,
   fetchLocations
 };
@@ -17,6 +18,12 @@ async function getById(id) {
   return db('hotels')
     .where({ id })
     .first();
+}
+
+async function remove(id) {
+  return db('hotels')
+    .where({ id })
+    .del();
 }
 
 async function fetchLocations(hotel_id) {
