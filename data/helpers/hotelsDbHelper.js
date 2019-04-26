@@ -4,15 +4,16 @@ module.exports = {
   fetchAll,
   getById,
   insert,
+  update,
   findBy,
   fetchLocations
 };
 
-function fetchAll() {
+async function fetchAll() {
   return db('hotels');
 }
 
-function getById(id) {
+async function getById(id) {
   return db('hotels')
     .where({ id })
     .first();
@@ -23,13 +24,24 @@ async function fetchLocations(hotel_id) {
     .where({ 'locations.hotel_id': hotel_id })
     .join('hotels', 'hotels.id', 'locations.hotel_id')
 }
-function insert(hotel) {
+
+async function insert(hotel) {
   return db('hotels')
     .insert(hotel)
     .then(ids => {
       return getById(ids[0]);
     });
 }
+
+async function update(id, changes) {
+  return db('hotels')
+    .where({ id })
+    .update(changes)
+    .then(function() {
+      return getById(id);
+    });
+}
+
 function findBy(filter) {
     return db('hotels').where(filter);
 }

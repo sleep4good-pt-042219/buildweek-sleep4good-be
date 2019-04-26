@@ -34,6 +34,24 @@ router.get('/:id', restricted, async (req, res) => {
    }
 });
 
+router.put('/:id', restricted, async (req, res) => {
+  const id = req.params.id;
+  const updatedHotel = req.body;
+  
+  try {
+    const hotel = await Hotels.update(id, updatedHotel);
+
+    if (hotel) {
+        res.status(200).json(hotel);
+    }
+    else {
+        res.status(404).json(`This hotel is not available.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
 router.post('/', restricted, authorization, async (req, res) => {
    try {
       const hotels = await Hotels.fetchAll();
