@@ -3,7 +3,7 @@ const Hotels = require('./../../data/helpers/hotelsDbHelper');
 const restricted = require('../../auth/restrictedMiddleware');
 const authorization = require('../../auth/authMiddleware');
 
-router.get('/', restricted, authorization, async (req, res) => {
+router.get('/', restricted, async (req, res) => {
    try {
       const hotels = await Hotels.fetchAll();
 
@@ -16,6 +16,22 @@ router.get('/', restricted, authorization, async (req, res) => {
     } catch (e) {
       res.status(500).json(e);
     }
+});
+
+router.get('/:id', restricted, async (req, res) => {
+  const id = req.params.id
+  try {
+     const hotel = await Hotels.getById(id);
+
+     if (hotel) {
+         res.status(200).json(hotel);
+     }
+     else {
+         res.status(404).json(`This hotel is not available.`)
+     }
+   } catch (e) {
+     res.status(500).json(e);
+   }
 });
 
 router.post('/', restricted, authorization, async (req, res) => {
