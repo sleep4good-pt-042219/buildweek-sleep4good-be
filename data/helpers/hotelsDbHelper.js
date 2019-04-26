@@ -4,7 +4,8 @@ module.exports = {
   fetchAll,
   getById,
   insert,
-  findBy
+  findBy,
+  fetchLocations
 };
 
 function fetchAll() {
@@ -17,6 +18,11 @@ function getById(id) {
     .first();
 }
 
+async function fetchLocations(hotel_id) {
+  return db('locations')
+    .where({ 'locations.hotel_id': hotel_id })
+    .join('hotels', 'hotels.id', 'locations.hotel_id')
+}
 function insert(hotel) {
   return db('hotels')
     .insert(hotel)

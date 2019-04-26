@@ -8,20 +8,8 @@ exports.up = function(knex) {
             .notNullable()
             .unique()
         hotels
-            .text('street_address', 255)
-            .notNullable();
-        hotels
-            .text('city', 255)
-            .notNullable();
-        hotels
-            .text('state', 55)
-            .notNullable();
-        hotels
-            .integer('zip', 5)
-            .notNullable();
-        hotels
-            .text('phone', 255)
-            .notNullable();
+            .text('imageUrl', 255)
+            .notNullable()
     })
 };
 
