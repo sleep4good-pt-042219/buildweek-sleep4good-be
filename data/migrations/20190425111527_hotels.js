@@ -4,7 +4,7 @@ exports.up = function(knex) {
     .createTable('hotels', function(hotels) {
         hotels.increments();
         hotels
-            .text('name', 255)
+            .text('hotel_name', 255)
             .notNullable()
             .unique()
         hotels

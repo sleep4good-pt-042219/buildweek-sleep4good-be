@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
     return knex('hotels').insert([
-      { name: 'Marry-a-lott', imageUrl: '' },
-      { name: 'Holiday Binn', imageUrl: '' },
-      { name: 'Shillton', imageUrl: '' },
-      { name: '4 Reasons', imageUrl: '' },
-      { name: 'Shrimp Tower', imageUrl: '' },
+      { hotel_name: 'Marry-a-lott', imageUrl: '' },
+      { hotel_name: 'Holiday Binn', imageUrl: '' },
+      { hotel_name: 'Shillton', imageUrl: '' },
+      { hotel_name: '4 Reasons', imageUrl: '' },
+      { hotel_name: 'Shrimp Tower', imageUrl: '' },
     ]);
 };
   

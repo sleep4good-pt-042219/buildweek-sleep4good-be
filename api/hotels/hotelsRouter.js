@@ -67,6 +67,24 @@ router.delete('/:id', restricted, async (req, res) => {
      res.status(500).json(e);
    }
 });
+
+router.get('/:id/locations', restricted, async (req, res) => {
+  const id = req.params.id;
+  
+  try {
+    const locations = await Hotels.fetchLocations(id);
+
+    if (locations) {
+        res.status(200).json(locations);
+    }
+    else {
+        res.status(404).json(`This hotel locations are not available.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
 router.post('/', restricted, authorization, async (req, res) => {
    try {
       const hotels = await Hotels.fetchAll();

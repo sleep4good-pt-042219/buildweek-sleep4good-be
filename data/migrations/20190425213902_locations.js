@@ -1,10 +1,10 @@
-
 exports.up = function(knex) {
+    
     return knex.schema
     .createTable('locations', function(locations) {
         locations.increments();
         locations
-            .text('name', 255)
+            .text('location_name', 255)
             .notNullable();
         locations
             .integer('hotel_id')

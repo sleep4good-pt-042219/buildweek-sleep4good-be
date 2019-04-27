@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
     return knex('locations').insert([
         { 
-            name: 'Holiday Binn of Georgetown',
+            location_name: 'Holiday Binn of Georgetown',
             hotel_id: 2,
             imageUrl: '',
             street_address: '567 City Street',
@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 1
         },
         {
-            name: 'Shillton of Texas',
+            location_name: 'Shillton of Texas',
             hotel_id: 3,
             imageUrl: '',
             street_address: '567 City Street',
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 3
         },
         {
-            name: 'Holiday Binn of Montana',
+            location_name: 'Holiday Binn of Montana',
             hotel_id: 2,
             imageUrl: '',
             street_address: '567 City Street',
@@ -40,7 +40,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 2
         },
         {
-            name: 'Marry a Lot of Nashville',
+            location_name: 'Marry a Lot of Nashville',
             hotel_id: 1,
             imageUrl: '',
             street_address: '345 Village Street',
@@ -53,7 +53,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 1
         }, 
         { 
-            name: 'Shillton of Miami',
+            location_name: 'Shillton of Miami',
             hotel_id: 3,
             imageUrl: '',
             street_address: '8009 Town Street',
@@ -66,7 +66,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 1
         },
         { 
-            name: '4 Reasons of Las Vegas',
+            location_name: '4 Reasons of Las Vegas',
             hotel_id: 4,
             imageUrl: '',
             street_address: '333 Simple Ct',
@@ -79,7 +79,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 4
         },
         { 
-            name: 'Marry a Lot of Baltimore',
+            location_name: 'Marry a Lot of Baltimore',
             hotel_id: 1,
             imageUrl: '',
             street_address: '333 Baltimore Pls',
@@ -92,7 +92,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 5
         },
         { 
-            name: 'Shrimp of Detroit',
+            location_name: 'Shrimp of Detroit',
             hotel_id: 5,
             imageUrl: '',
             street_address: '333 Detroit Rd',
@@ -105,7 +105,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 1
         },
         { 
-            name: 'Shrimp of Flint',
+            location_name: 'Shrimp of Flint',
             hotel_id: 5,
             imageUrl: '',
             street_address: '333 Flint Rd',
@@ -118,7 +118,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 3
         },
         { 
-            name: 'Shillton of Boston',
+            location_name: 'Shillton of Boston',
             hotel_id: 3,
             imageUrl: '',
             street_address: '333 Boston Rd',
@@ -131,7 +131,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 2
         },
         { 
-            name: '4 Reasons of Denver',
+            location_name: '4 Reasons of Denver',
             hotel_id: 4,
             imageUrl: '',
             street_address: '333 Denver Ct',
@@ -144,7 +144,7 @@ exports.seed = function(knex, Promise) {
             donation_id: 4
         },
         { 
-            name: 'Holliday Binn of Oregon',
+            location_name: 'Holliday Binn of Oregon',
             hotel_id: 2,
             imageUrl: '',
             street_address: '333 Oregon Ct',
