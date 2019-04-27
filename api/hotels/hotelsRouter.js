@@ -71,8 +71,10 @@ router.delete('/:id', restricted, async (req, res) => {
 
 router.get('/:id/locations', restricted, async (req, res) => {
   const id = req.params.id;
+  console.log(id);
   try {
     const locations = await Locations.fetchLocations(id);
+    console.log(locations);
     if (locations) {
         res.status(200).json(locations);
     }
