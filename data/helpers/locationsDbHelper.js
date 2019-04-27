@@ -1,8 +1,7 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-    fetchLocations,
-    getLocationById
+    fetchLocations
 };
 
 
@@ -11,9 +10,3 @@ async function fetchLocations(hotel_id) {
       .where({ 'locations.hotel_id': hotel_id })
       .join('hotels', 'hotels.id', 'locations.hotel_id')
 }
-
-async function getLocationById(id) {
-    return db('locations')
-      .where({ id })
-}
-  
