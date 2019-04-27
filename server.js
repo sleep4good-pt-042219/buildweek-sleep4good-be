@@ -15,6 +15,7 @@ server.get('/', (req, res) => {
 
 server.use('/api/hotels/', hotelsRouter);
 server.use('/api/users/', usersRouter);
+// server.use('/api/users/', usersRouter);
 server.use('/auth/', authRouter);
 
 module.exports = server;

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Hotels = require('./../../data/helpers/hotelsDbHelper');
+const Locations = require('./../../data/helpers/locationsDbHelper');
 const restricted = require('../../auth/restrictedMiddleware');
 const authorization = require('../../auth/authMiddleware');
 
@@ -68,17 +69,17 @@ router.delete('/:id', restricted, async (req, res) => {
    }
 });
 
-router.get('/:id/locations', restricted, async (req, res) => {
+router.get('/:id/locations/:location_id', restricted, async (req, res) => {
   const id = req.params.id;
   
   try {
-    const locations = await Hotels.fetchLocations(id);
+    const location = await Locations.getLocationById(id);
 
-    if (locations) {
-        res.status(200).json(locations);
+    if (location) {
+        res.status(200).json(location);
     }
     else {
-        res.status(404).json(`This hotel locations are not available.`)
+        res.status(404).json(`This hotel location is not available.`)
     }
   } catch (e) {
     res.status(500).json(e);

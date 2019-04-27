@@ -7,7 +7,6 @@ module.exports = {
   update,
   remove,
   findBy,
-  fetchLocations
 };
 
 async function fetchAll() {
@@ -24,12 +23,6 @@ async function remove(id) {
   return db('hotels')
     .where({ id })
     .del();
-}
-
-async function fetchLocations(hotel_id) {
-  return db('locations').select('*')
-    .where({ 'locations.hotel_id': hotel_id })
-    .join('hotels', 'hotels.id', 'locations.hotel_id')
 }
 
 async function insert(hotel) {
