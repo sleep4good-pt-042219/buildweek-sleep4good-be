@@ -12,6 +12,8 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('hotels')
+            .onDelete('CASCADE')
+             .onUpdate('CASCADE')
         locations
             .text('imageUrl', 255)
             .notNullable();
@@ -41,6 +43,8 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable()
             .references('id')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
             .inTable('donations')
         
     })

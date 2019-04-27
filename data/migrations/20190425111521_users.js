@@ -12,6 +12,8 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .references('id')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE')
                 .inTable('roles')
         })
 };
