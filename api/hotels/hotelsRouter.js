@@ -69,6 +69,21 @@ router.delete('/:id', restricted, async (req, res) => {
    }
 });
 
+router.get('/:id/locations', restricted, async (req, res) => {
+  const id = req.params.id;
+  try {
+    const locations = await Locations.fetchLocations(id);
+    if (locations) {
+        res.status(200).json(locations);
+    }
+    else {
+        res.status(404).json(`This hotel's locations are not available.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
 router.get('/:id/locations/:location_id', restricted, async (req, res) => {
   const location_id = req.params.location_id;
   const id = req.params.id;
