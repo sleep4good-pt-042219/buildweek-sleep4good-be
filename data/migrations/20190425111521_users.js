@@ -12,9 +12,9 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .references('id')
+                .inTable('roles')
                 .onDelete('CASCADE')
                 .onUpdate('CASCADE')
-                .inTable('roles')
         })
 };
 

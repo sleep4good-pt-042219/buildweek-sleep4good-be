@@ -43,9 +43,9 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable()
             .references('id')
+            .inTable('donations')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
-            .inTable('donations')
         
     })
 };
