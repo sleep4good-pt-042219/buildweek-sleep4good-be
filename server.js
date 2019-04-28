@@ -9,6 +9,7 @@ const authRouter = require('./auth/authRouter')
 const usersRouter = require('./api/users/usersRouter')
 const hotelsRouter = require('./api/hotels/hotelsRouter')
 const bookingsRouter = require('./api/bookings/bookingsRouter')
+const locationsRouter = require('./api/locations/locationsRoute')
 
 server.get('/', (req, res) => {
     res.status(200).json('Home Page up and running')
