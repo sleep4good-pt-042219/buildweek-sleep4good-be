@@ -15,6 +15,7 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/hotels/', hotelsRouter);
+// server.use('/api/locations/', locationssRouter);
 server.use('/api/users/', usersRouter);
 server.use('/auth/', authRouter);
 server.use('/api/bookings', bookingsRouter);

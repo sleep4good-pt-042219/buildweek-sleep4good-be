@@ -1,10 +1,13 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-    fetchLocations
+    fetchLocations,
+    fetchAllLocations
 };
 
-
+async function fetchLocations() {
+    return db('locations');
+}
 async function fetchLocations(hotel_id) {
     return db('locations').select('*')
       .where({ 'locations.hotel_id': hotel_id })
