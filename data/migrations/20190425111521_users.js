@@ -4,9 +4,9 @@ exports.up = function(knex) {
         .createTable('users', function(users) {
             users.increments();
             users
-                .string('username', 255).notNullable().unique()
+                .text('username', 255).notNullable().unique()
             users
-                .string('password', 255).notNullable();
+                .text('password', 255).notNullable();
             users
                 .integer('role_id')
                 .unsigned()
