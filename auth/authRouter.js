@@ -21,6 +21,7 @@ router.post('/partner/register', (req, res) => {
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
     user.role_id = 2;
+    console.log(user)
     Users.insert(user)
       .then(saved => {
         res.status(201).json(saved);
