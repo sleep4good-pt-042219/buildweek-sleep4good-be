@@ -4,7 +4,7 @@ exports.up = function(knex) {
     .createTable('locations', function(locations) {
         locations.increments();
         locations
-            .text('location_name', 255)
+            .string('location_name', 255)
             .notNullable();
         locations
             .integer('hotel_id')
@@ -15,25 +15,25 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
              .onUpdate('CASCADE')
         locations
-            .text('imageUrl', 255)
+            .string('imageUrl', 255)
             .notNullable();
         locations
-            .text('street_address', 255)
+            .string('street_address', 255)
             .notNullable();
         locations
-            .text('city', 255)
+            .string('city', 255)
             .notNullable();
         locations
-            .text('state', 55)
+            .string('state', 55)
             .notNullable();
         locations
             .integer('zip', 5)
             .notNullable();
         locations
-            .text('phone', 20)
+            .string('phone', 20)
             .notNullable();
         locations
-            .text('email', 255)
+            .string('email', 255)
             .notNullable();
         locations
             .integer('rating')

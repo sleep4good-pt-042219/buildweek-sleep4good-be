@@ -4,11 +4,11 @@ exports.up = function(knex) {
     .createTable('hotels', function(hotels) {
         hotels.increments();
         hotels
-            .text('hotel_name', 255)
+            .string('hotel_name', 255)
             .notNullable()
             .unique()
         hotels
-            .text('imageUrl', 255)
+            .string('imageUrl', 255)
             .notNullable()
     })
 };

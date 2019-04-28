@@ -4,7 +4,7 @@ exports.up = function(knex) {
         .createTable('roles', function(roles) {
             roles.increments();
             roles
-                .text('name', 25)
+                .string('name', 25)
                 .notNullable()
                 .unique()
         })
