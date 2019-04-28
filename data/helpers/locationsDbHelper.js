@@ -5,7 +5,7 @@ module.exports = {
     fetchAllLocations
 };
 
-async function fetchLocations() {
+async function fetchAllLocations() {
     return db('locations');
 }
 async function fetchLocations(hotel_id) {

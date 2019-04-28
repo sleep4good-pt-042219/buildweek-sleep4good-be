@@ -19,4 +19,4 @@ router.get('/', restricted, async (req, res) => {
     }
   });
 
-  module.exports = server;
+  module.exports = router;
