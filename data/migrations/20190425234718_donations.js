@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     .createTable('donations', function(donations) {
         donations.increments();
         donations
-            .text('code', 255)
+            .string('code', 255)
             .notNullable();
         donations
             .integer('discount', 55)
