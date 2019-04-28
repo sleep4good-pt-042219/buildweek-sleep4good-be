@@ -28,6 +28,10 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
         bookings
+            // .notNullable()
+            .timestamp('created_at')
+            .defaultTo(knex.fn.now());
+        bookings
             .integer('total', 55)
             .notNullable();
         
