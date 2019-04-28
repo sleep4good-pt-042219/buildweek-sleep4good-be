@@ -1,6 +1,6 @@
 exports.seed = function(knex, Promise) {
     return knex('donations')
-    .truncate()
+    // .truncate()
     .then(function() { 
       return knex('donations').insert([
       { code: 'BINGO001', discount: 10 }, // 1

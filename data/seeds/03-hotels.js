@@ -1,6 +1,6 @@
 exports.seed = function(knex, Promise) {
   return knex('hotels')
-    .truncate()
+    // .truncate()
     .then(function() { 
         return knex('hotels').insert([
         { hotel_name: 'Marry-a-lott', imageUrl: '' },

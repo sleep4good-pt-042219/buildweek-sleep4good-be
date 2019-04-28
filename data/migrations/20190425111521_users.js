@@ -6,7 +6,7 @@ exports.up = function(knex) {
             users
                 .text('username', 255).notNullable().unique()
             users
-                .text('password', 25).notNullable();
+                .text('password', 255).notNullable();
             users
                 .integer('role_id')
                 .unsigned()

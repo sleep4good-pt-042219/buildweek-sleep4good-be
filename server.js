@@ -8,6 +8,7 @@ server.use(express.json(), cors(), helmet());
 const authRouter = require('./auth/authRouter')
 const usersRouter = require('./api/users/usersRouter')
 const hotelsRouter = require('./api/hotels/hotelsRouter')
+const bookingsRouter = require('./api/bookings/bookingsRouter')
 
 server.get('/', (req, res) => {
     res.status(200).json('Home Page up and running')
@@ -16,5 +17,6 @@ server.get('/', (req, res) => {
 server.use('/api/hotels/', hotelsRouter);
 server.use('/api/users/', usersRouter);
 server.use('/auth/', authRouter);
+server.use('/api/bookings', bookingsRouter);
 
 module.exports = server;
