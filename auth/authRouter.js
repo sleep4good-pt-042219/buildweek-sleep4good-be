@@ -16,10 +16,11 @@ function generateToken(user) {
     return jwt.sign(payload, secret, options)
 }
 
-router.post('/register', (req, res) => {
+router.post('/partner/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
+    user.role_id = 2;
     Users.insert(user)
       .then(saved => {
         res.status(201).json(saved);
@@ -27,6 +28,20 @@ router.post('/register', (req, res) => {
       .catch(error => {
         res.status(500).json(error);
       });
+});
+
+router.post('/patron/register', (req, res) => {
+  let user = req.body;
+  const hash = bcrypt.hashSync(user.password, 10);
+  user.password = hash;
+  user.role_id = 3;
+  Users.insert(user)
+    .then(saved => {
+      res.status(201).json(saved);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
 router.post('/login', (req, res) => {
