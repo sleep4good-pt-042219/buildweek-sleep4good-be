@@ -60,7 +60,7 @@ router.put('/:id', restricted, authorization, async (req, res) => {
     const hotel = await Hotels.updateHotel(id, newHotel);
 
     if (hotel) {
-        res.status(200).json(hotel);
+        res.status(200).json({hotel, message: 'Hotel was successfully updated.'});
     }
     else {
         res.status(404).json(`This hotel is not available.`)
