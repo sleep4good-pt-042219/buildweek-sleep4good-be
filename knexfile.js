@@ -7,7 +7,7 @@ module.exports = {
       },
       migrations: {
         directory: './data/migrations',
-        tableName: 'knex_migrations',
+        // tableName: 'knex_migrations',
       },
       seeds: {
         directory: './data/seeds',
@@ -15,12 +15,14 @@ module.exports = {
     },
     production: {
       client: 'pg',
-      connection: process.env.DATABASE_URL,
+      connection: {
+          filename: './data/sleep4good.db3',
+      },
       migrations: {
-          directory: __dirname + '/data/migrations',
+          directory: './data/migrations',
       },
       seeds: {
-          directory: __dirname + '/data/seeds/',
+          directory: './data/seeds',
       },
     },
   };
