@@ -19,4 +19,38 @@ router.get('/', restricted, async (req, res) => {
 });
 
 
+router.get('/:id/', restricted, async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const location = await Locations.fetchLocationByLocationId(id);
+    if (location) {
+        res.status(201).json(location);
+    }
+    else {
+        res.status(404).json(`This hotel location is not available.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
+
+router.delete('/:id/', restricted, async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const deleted = await Locations.deleteLocationByLocationId(id);
+    if (deleted) {
+        res.status(201).json({ message: 'This location was deleted.' });
+    }
+    else {
+        res.status(404).json(`This hotel location is not available.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
+
   module.exports = router;
