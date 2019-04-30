@@ -3,7 +3,8 @@ const db = require('../dbConfig.js');
 module.exports = {
     fetchBookings,
     addBooking,
-    getBookingById
+    getBookingById,
+    updateBooking
 };
 
 function getBookingById(id) {
@@ -19,5 +20,14 @@ function addBooking(booking) {
       .insert(booking, ['id'])
       .then(ids => {
         return getBookingById(ids[0]);
+    });
+}
+
+function updateBooking(id, changes) {
+    return db('bookings')
+      .where({ id })
+      .update(changes)
+      .then(function() {
+        return getBookingById(id);
     });
 }
