@@ -55,6 +55,23 @@ router.put('/:id', restricted, async (req, res) => {
     }
 })
 
+router.delete('/:id', restricted, async (req, res) => {
+    
+    const id = req.params.id;
+    try {
+        const booking = await Bookings.deleteBooking(id);
+
+        if (booking) {
+            res.status(200).json(booking)
+        } else {
+            res.status(404).json('This booking id is not available.')
+        }
+    }
+    catch (e) {
+        res.status(500).json(e)
+    }
+})
+
 router.get('/:id', restricted, async (req, res) => {
     
     const id = req.params.id;

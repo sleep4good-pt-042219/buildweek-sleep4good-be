@@ -4,7 +4,8 @@ module.exports = {
     fetchBookings,
     addBooking,
     getBookingById,
-    updateBooking
+    updateBooking,
+    deleteBooking
 };
 
 function getBookingById(id) {
@@ -21,6 +22,11 @@ function addBooking(booking) {
       .then(ids => {
         return getBookingById(ids[0]);
     });
+}
+function deleteBooking(id) {
+    return db('bookings')
+        .where({ id })
+        .del()
 }
 
 function updateBooking(id, changes) {
