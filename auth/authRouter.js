@@ -26,7 +26,7 @@ router.post('/partner/register', async (req, res) => {
     const newUser = await Users.insert(user)
 
     if (newUser) {
-      res.status(201).json(saved);
+      res.status(201).json(newUser);
     } else {
       res.status(404).json('All fields are required')
     }
@@ -42,7 +42,7 @@ router.post('/patron/register', async (req, res) => {
   user.role_id = 3;
   console.log(user)
   try {
-    const newUser = await Users.insert(user)
+    const newUser = await Users.insert(user);
 
     if (newUser) {
       res.status(201).json(newUser);

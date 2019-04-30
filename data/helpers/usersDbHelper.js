@@ -19,10 +19,10 @@ function getById(id) {
 
 async function insert(user) {
   return db('users')
-      .insert(user)
+      .insert(user, ['id'])
       .then(ids => {
         console.log(ids);
-        return getById(ids);
+        return getById(ids[0]);
       });
 }
 function findBy(filter) {
