@@ -19,6 +19,23 @@ router.get('/', restricted, async (req, res) => {
     }
 });
 
+router.post('/', restricted, authorization, async (req, res) => {
+  const newHotel = req.body;
+  
+  try {
+    const hotel = await Hotels.insert(newHotel);
+
+    if (hotel) {
+        res.status(200).json(hotel);
+    }
+    else {
+        res.status(404).json(`All hotel information is required.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
 router.get('/:id', restricted, async (req, res) => {
   const id = req.params.id
   try {
@@ -35,12 +52,12 @@ router.get('/:id', restricted, async (req, res) => {
    }
 });
 
-router.put('/:id', restricted, async (req, res) => {
+router.put('/:id', restricted, authorization, async (req, res) => {
   const id = req.params.id;
-  const updatedHotel = req.body;
+  const newHotel = req.body;
   
   try {
-    const hotel = await Hotels.update(id, updatedHotel);
+    const hotel = await Hotels.update(id, newHotel);
 
     if (hotel) {
         res.status(200).json(hotel);
@@ -68,7 +85,6 @@ router.delete('/:id', restricted, async (req, res) => {
      res.status(500).json(e);
    }
 });
-
 
 router.get('/:id/locations', restricted, async (req, res) => {
   const id = req.params.id;
