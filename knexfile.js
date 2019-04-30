@@ -15,8 +15,9 @@ module.exports = {
     },
     production: {
       client: 'pg',
-      useNullAsDefault: true,
-      connection: process.env.DATABASE_URL,
+      connection: {
+        filename: './data/sleep4good.db3',
+      },
       migrations: {
           directory: __dirname + '/data/migrations',
       },
