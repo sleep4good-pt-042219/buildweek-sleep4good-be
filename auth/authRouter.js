@@ -21,7 +21,6 @@ router.post('/partner/register', async (req, res) => {
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
   user.role_id = 2;
-  console.log(user)
   try {
     const newUser = await Users.insert(user)
 
@@ -40,7 +39,6 @@ router.post('/patron/register', async (req, res) => {
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
   user.role_id = 3;
-  console.log(user)
   try {
     const newUser = await Users.insert(user);
 
