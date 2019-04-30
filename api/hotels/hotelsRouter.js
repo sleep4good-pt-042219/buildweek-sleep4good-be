@@ -6,7 +6,7 @@ const authorization = require('../../auth/authMiddleware');
 
 router.get('/', restricted, async (req, res) => {
    try {
-      const hotels = await Hotels.fetchAll();
+      const hotels = await Hotels.fetchAllHotels();
 
       if (hotels) {
           res.status(200).json(hotels);
@@ -23,7 +23,7 @@ router.post('/', restricted, authorization, async (req, res) => {
   const newHotel = req.body;
   
   try {
-    const hotel = await Hotels.insert(newHotel);
+    const hotel = await Hotels.addHotel(newHotel);
 
     if (hotel) {
         res.status(200).json(hotel);
@@ -39,7 +39,7 @@ router.post('/', restricted, authorization, async (req, res) => {
 router.get('/:id', restricted, async (req, res) => {
   const id = req.params.id
   try {
-     const hotel = await Hotels.getById(id);
+     const hotel = await Hotels.getHotelById(id);
 
      if (hotel) {
          res.status(200).json(hotel);
@@ -57,7 +57,7 @@ router.put('/:id', restricted, authorization, async (req, res) => {
   const newHotel = req.body;
   
   try {
-    const hotel = await Hotels.update(id, newHotel);
+    const hotel = await Hotels.updateHotel(id, newHotel);
 
     if (hotel) {
         res.status(200).json(hotel);
@@ -73,7 +73,7 @@ router.put('/:id', restricted, authorization, async (req, res) => {
 router.delete('/:id', restricted, async (req, res) => {
   const id = req.params.id
   try {
-     const hotel = await Hotels.remove(id);
+     const hotel = await Hotels.removeHotel(id);
 
      if (hotel) {
          res.status(200).json('Hotel was removed');
@@ -122,7 +122,7 @@ router.get('/:id/locations/:location_id', restricted, async (req, res) => {
 
 router.post('/', restricted, authorization, async (req, res) => {
    try {
-      const hotels = await Hotels.fetchAll();
+      const hotels = await Hotels.fetchAllHotels();
 
       if (hotels) {
           res.status(200).json(hotels);
