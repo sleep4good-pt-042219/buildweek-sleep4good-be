@@ -21,7 +21,8 @@ async function insert(user) {
   return db('users')
       .insert(user)
       .then(ids => {
-        return getById(ids[0]);
+        console.log(ids);
+        return getById(ids);
       });
 }
 function findBy(filter) {

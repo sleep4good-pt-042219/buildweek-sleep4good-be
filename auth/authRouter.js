@@ -45,7 +45,7 @@ router.post('/patron/register', async (req, res) => {
     const newUser = await Users.insert(user)
 
     if (newUser) {
-      res.status(201).json(saved);
+      res.status(201).json(newUser);
     } else {
       res.status(404).json('All fields are required')
     }
