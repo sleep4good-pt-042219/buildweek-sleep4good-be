@@ -19,7 +19,7 @@ function getById(id) {
 
 async function insert(user) {
   return db("users")
-      .insert(user, ["id"])
+      .insert(user)
       .then(ids => {
         return getById(ids[0]);
       });
