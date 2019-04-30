@@ -3,11 +3,10 @@ const Locations = require('./../../data/helpers/locationsDbHelper');
 const restricted = require('../../auth/restrictedMiddleware');
 
 router.get('/', restricted, async (req, res) => {
-    const id = req.params.id;
-    console.log(id);
     try {
+
       const locations = await Locations.fetchAllLocations();
-      console.log(locations);
+
       if (locations) {
           res.status(200).json(locations);
       }
@@ -17,6 +16,7 @@ router.get('/', restricted, async (req, res) => {
     } catch (e) {
       res.status(500).json(e);
     }
-  });
+});
+
 
   module.exports = router;

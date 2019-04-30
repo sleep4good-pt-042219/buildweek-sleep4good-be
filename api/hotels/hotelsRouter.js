@@ -87,11 +87,9 @@ router.delete('/:id', restricted, async (req, res) => {
 });
 
 router.get('/:id/locations', restricted, async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
+  const hotel_id = req.params.id;
   try {
-    const locations = await Locations.fetchLocations(id);
-    console.log(locations);
+    const locations = await Locations.fetchAllLocations(hotel_id);
     if (locations) {
         res.status(200).json(locations);
     }
@@ -105,9 +103,9 @@ router.get('/:id/locations', restricted, async (req, res) => {
 
 router.get('/:id/locations/:location_id', restricted, async (req, res) => {
   const location_id = req.params.location_id;
-  const id = req.params.id;
+  const hotel_id = req.params.id;
   try {
-    const locations = await Locations.fetchLocations(id);
+    const locations = await Locations.fetchLocationByHotelId(hotel_id);
     const location = locations[location_id];
     if (location) {
         res.status(200).json(location);
