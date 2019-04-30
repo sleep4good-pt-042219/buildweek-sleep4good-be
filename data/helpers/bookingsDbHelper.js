@@ -2,21 +2,22 @@ const db = require('../dbConfig.js');
 
 module.exports = {
     fetchBookings,
-    addBooking
+    addBooking,
+    getBookingById
 };
 
-function getById(id) {
-    return db('users')
+function getBookingById(id) {
+    return db('bookings')
       .where({ id })
       .first();
 }
-async function fetchBookings() {
-    return db('bookings').select('*')
+function fetchBookings() {
+    return db('bookings')
 }
-async function addBooking(booking) {
+function addBooking(booking) {
     return db('bookings')
       .insert(booking, ['id'])
       .then(ids => {
-        return getById(ids[0]);
+        return getBookingById(ids[0]);
     });
 }
