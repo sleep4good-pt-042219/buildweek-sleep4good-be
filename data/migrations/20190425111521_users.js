@@ -8,7 +8,7 @@ exports.up = function(knex) {
             users
                 .string('password', 255).notNullable();
             users
-                .integer('role_id')
+                .decimal('role_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
