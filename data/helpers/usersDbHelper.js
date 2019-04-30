@@ -12,18 +12,18 @@ function fetchAll() {
 }
 
 function getById(id) {
-  return db("users")
+  return db('users')
     .where({ id })
     .first();
 }
 
 async function insert(user) {
-  return db("users")
-      .insert(user, ["id"])
+  return db('users')
+      .insert(user, ['id'])
       .then(ids => {
         return getById(ids[0]);
       });
 }
 function findBy(filter) {
-    return db("users").where(filter);
+    return db('users').where(filter);
 }
