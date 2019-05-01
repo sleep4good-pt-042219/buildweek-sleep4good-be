@@ -15,8 +15,8 @@ exports.seed = function(knex, Promise) {
                 hotel_id: 3,
                 user_id: 2,
                 total: 55,
-                booking_start_date: '20',
-                booking_end_date: '2006-12-30 00:38:542006-12-30 00:38:542006-12-30 00:38:542006-12-30 00:38:542006-12-30 00:38:542006-12-30 00:38:542006-12-30 00:38:542006-12-30 00:38:54'
+                booking_start_date: '2006-12-30 00:38:54',
+                booking_end_date: '2006-12-30 00:38:54'
             },
             {
                 location_id: 5,
