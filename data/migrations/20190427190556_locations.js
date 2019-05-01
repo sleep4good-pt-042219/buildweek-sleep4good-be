@@ -15,6 +15,9 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
              .onUpdate('CASCADE')
         locations
+             .integer('rooms', 999)
+             .notNullable();
+        locations
             .string('imageUrl', 255)
             .notNullable();
         locations
