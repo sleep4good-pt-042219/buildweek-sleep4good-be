@@ -13,16 +13,17 @@ function fetchAll() {
 
 function getById(id) {
   return db('users')
-    .where({ id })
+    .where({ id: id })
     .first();
 }
 
 async function insert(user) {
   return db('users')
-    .insert(user, ['id'])
-    .then(ids => {
-      return getById(ids[0]);
-    });
+      .insert(user, 'id')
+      .then(ids => {
+        console.log(ids)
+        return getById(ids[0]);
+      });
 }
 function findBy(filter) {
     return db('users').where(filter);

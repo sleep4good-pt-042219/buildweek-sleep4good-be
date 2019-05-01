@@ -16,33 +16,43 @@ function generateToken(user) {
     return jwt.sign(payload, secret, options)
 }
 
-router.post('/partner/register', (req, res) => {
-    let user = req.body;
-    const hash = bcrypt.hashSync(user.password, 10);
-    user.password = hash;
-    user.role_id = 2;
-    console.log(user)
-    Users.insert(user)
-      .then(saved => {
-        res.status(201).json(saved);
-      })
-      .catch(error => {
-        res.status(500).json(error);
-      });
+router.post('/partner/register', async (req, res) => {
+  let user = req.body;
+  const hash = bcrypt.hashSync(user.password, 10);
+  user.password = hash;
+  user.role_id = 2;
+  try {
+    console.log('Hit register end point')
+    const newUser = await Users.insert(user)
+    console.log(`user is ${user}`)
+    console.log(`newUser is ${newUser}`)
+    if (newUser) {
+      res.status(201).json(newUser);
+    } else {
+      res.status(404).json('All fields are required')
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json(e);
+  }
 });
 
-router.post('/patron/register', (req, res) => {
+router.post('/patron/register', async (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
   user.role_id = 3;
-  Users.insert(user)
-    .then(saved => {
-      res.status(201).json(saved);
-    })
-    .catch(error => {
-      res.status(500).json(error);
-    });
+  try {
+    const newUser = await Users.insert(user);
+
+    if (newUser) {
+      res.status(201).json(newUser);
+    } else {
+      res.status(404).json('All fields are required')
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
 });
 
 router.post('/login', (req, res) => {

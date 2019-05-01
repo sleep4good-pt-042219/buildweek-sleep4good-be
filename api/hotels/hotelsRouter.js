@@ -6,7 +6,7 @@ const authorization = require('../../auth/authMiddleware');
 
 router.get('/', restricted, async (req, res) => {
    try {
-      const hotels = await Hotels.fetchAll();
+      const hotels = await Hotels.fetchAllHotels();
 
       if (hotels) {
           res.status(200).json(hotels);
@@ -19,10 +19,27 @@ router.get('/', restricted, async (req, res) => {
     }
 });
 
+router.post('/', restricted, authorization, async (req, res) => {
+  const newHotel = req.body;
+  
+  try {
+    const hotel = await Hotels.addHotel(newHotel);
+
+    if (hotel) {
+        res.status(200).json(hotel);
+    }
+    else {
+        res.status(404).json(`All hotel information is required.`)
+    }
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
 router.get('/:id', restricted, async (req, res) => {
   const id = req.params.id
   try {
-     const hotel = await Hotels.getById(id);
+     const hotel = await Hotels.getHotelById(id);
 
      if (hotel) {
          res.status(200).json(hotel);
@@ -35,15 +52,15 @@ router.get('/:id', restricted, async (req, res) => {
    }
 });
 
-router.put('/:id', restricted, async (req, res) => {
+router.put('/:id', restricted, authorization, async (req, res) => {
   const id = req.params.id;
-  const updatedHotel = req.body;
+  const newHotel = req.body;
   
   try {
-    const hotel = await Hotels.update(id, updatedHotel);
+    const hotel = await Hotels.updateHotel(id, newHotel);
 
     if (hotel) {
-        res.status(200).json(hotel);
+        res.status(200).json({hotel, message: 'Hotel was successfully updated.'});
     }
     else {
         res.status(404).json(`This hotel is not available.`)
@@ -56,7 +73,7 @@ router.put('/:id', restricted, async (req, res) => {
 router.delete('/:id', restricted, async (req, res) => {
   const id = req.params.id
   try {
-     const hotel = await Hotels.remove(id);
+     const hotel = await Hotels.removeHotel(id);
 
      if (hotel) {
          res.status(200).json('Hotel was removed');
@@ -70,11 +87,9 @@ router.delete('/:id', restricted, async (req, res) => {
 });
 
 router.get('/:id/locations', restricted, async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
+  const hotel_id = req.params.id;
   try {
-    const locations = await Locations.fetchLocations(id);
-    console.log(locations);
+    const locations = await Locations.fetchLocationByHotelId(hotel_id);
     if (locations) {
         res.status(200).json(locations);
     }
@@ -88,9 +103,9 @@ router.get('/:id/locations', restricted, async (req, res) => {
 
 router.get('/:id/locations/:location_id', restricted, async (req, res) => {
   const location_id = req.params.location_id;
-  const id = req.params.id;
+  const hotel_id = req.params.id;
   try {
-    const locations = await Locations.fetchLocations(id);
+    const locations = await Locations.fetchLocationByHotelId(hotel_id);
     const location = locations[location_id];
     if (location) {
         res.status(200).json(location);
@@ -105,7 +120,7 @@ router.get('/:id/locations/:location_id', restricted, async (req, res) => {
 
 router.post('/', restricted, authorization, async (req, res) => {
    try {
-      const hotels = await Hotels.fetchAll();
+      const hotels = await Hotels.fetchAllHotels();
 
       if (hotels) {
           res.status(200).json(hotels);

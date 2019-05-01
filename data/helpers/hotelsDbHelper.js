@@ -1,47 +1,47 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-  fetchAll,
-  getById,
-  insert,
-  update,
-  remove,
-  findBy,
+  fetchAllHotels,
+  getHotelById,
+  addHotel,
+  updateHotel,
+  removeHotel,
+  findHotelBy,
 };
 
-async function fetchAll() {
+async function fetchAllHotels() {
   return db('hotels');
 }
 
-async function getById(id) {
+async function getHotelById(id) {
   return db('hotels')
     .where({ id })
     .first();
 }
 
-async function remove(id) {
+async function removeHotel(id) {
   return db('hotels')
     .where({ id })
     .del();
 }
 
-async function insert(hotel) {
+async function addHotel(hotel) {
   return db('hotels')
-    .insert(hotel)
+    .insert(hotel, ['id'])
     .then(ids => {
-      return getById(ids[0]);
+      return getHotelById(ids[0]);
     });
 }
 
-async function update(id, changes) {
+async function updateHotel(id, changes) {
   return db('hotels')
     .where({ id })
     .update(changes)
     .then(function() {
-      return getById(id);
+      return getHotelById(id);
     });
 }
 
-function findBy(filter) {
+function findHotelBy(filter) {
     return db('hotels').where(filter);
 }
