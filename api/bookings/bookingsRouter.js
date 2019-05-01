@@ -39,20 +39,22 @@ router.put('/:id', restricted, async (req, res) => {
     
     const id = req.params.id;
     const updateBooking = req.body;
-
+    
     try {
         const booking = await Bookings.updateBooking(id, updateBooking);
 
         if (booking) {
+            
             res.status(201).json({message: 'Booking was updated successfully', booking})
         } else {
-            res.status(404).json('All fields are required available.')
+            res.status(404).json('All fields are required.')
         }
     }
     catch (e) {
         console.log(e)
         res.status(500).json(e)
     }
+    
 })
 
 router.delete('/:id', restricted, async (req, res) => {
