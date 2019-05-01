@@ -11,7 +11,7 @@ router.get('/', restricted, async (req, res) => {
           res.status(200).json(payments);
       }
       else {
-          res.status(404).json(`This hotel's locations are not available.`)
+          res.status(404).json(`This hotel's Payments are not available.`)
       }
     } catch (e) {
       res.status(500).json(e);
@@ -28,7 +28,7 @@ router.post('/', restricted, async (req, res) => {
           res.status(200).json({message: 'Payment was processessed successfully', payment});
       }
       else {
-          res.status(404).json(`This hotel's locations are not available.`)
+          res.status(404).json(`All fields are required.`)
       }
     } catch (e) {
       res.status(500).json(e);
@@ -40,12 +40,12 @@ router.get('/:id/', restricted, async (req, res) => {
   const id = req.params.id;
 
   try {
-    const location = await Locations.fetchLocationByLocationId(id);
-    if (location) {
-        res.status(201).json(location);
+    const payment = await Payments.getPaymentById(id);
+    if (payment) {
+        res.status(201).json(payment);
     }
     else {
-        res.status(404).json(`This hotel location is not available.`)
+        res.status(404).json(`This payment is not available.`)
     }
   } catch (e) {
     res.status(500).json(e);
@@ -57,9 +57,9 @@ router.delete('/:id/', restricted, async (req, res) => {
   const id = req.params.id;
 
   try {
-    const deleted = await Locations.deleteLocationByLocationId(id);
+    const deleted = await Payments.deletePayment(id);
     if (deleted) {
-        res.status(201).json({ message: 'This location was deleted.' });
+        res.status(201).json({ message: 'This payment was deleted.' });
     }
     else {
         res.status(404).json(`This hotel location is not available.`)

@@ -3,16 +3,16 @@ const db = require('../dbConfig.js');
 module.exports = {
     fetchAllPayments,
     getPaymentById,
-    deletePaymentsByPaymentsId,
+    deletePayment,
     insertPayment
 };
 
 async function fetchAllPayments() {
-    return db('Payments');
+    return db('payments');
 }
-async function deletePaymentsByPaymentsId(id) {
+async function deletePayment(id) {
     // console.log(id)
-    return db('Payments')
+    return db('payments')
       .where({ id })
       .del()
 }
@@ -27,7 +27,7 @@ async function insertPayment(payment) {
 }
 async function getPaymentById(id) {
     // console.log(id)
-    return db('Payments')
+    return db('payments')
       .where({ id })
       .first()
 }
