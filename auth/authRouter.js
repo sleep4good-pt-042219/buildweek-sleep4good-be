@@ -22,13 +22,14 @@ router.post('/partner/register', async (req, res) => {
   user.password = hash;
   user.role_id = 2;
   try {
-    const newUser = await Users.insert(user)
+    console.log('Hit register end point')
+    // const newUser = await Users.insert(user)
 
-    if (newUser) {
-      res.status(201).json(newUser);
-    } else {
-      res.status(404).json('All fields are required')
-    }
+    // if (newUser) {
+    //   res.status(201).json(newUser);
+    // } else {
+    //   res.status(404).json('All fields are required')
+    // }
   } catch (e) {
     res.status(500).json(e);
   }
