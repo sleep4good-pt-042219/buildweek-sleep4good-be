@@ -25,7 +25,7 @@ router.post('/', restricted, async (req, res) => {
     const location = await Locations.addLocation(newLocation);
 
     if (location) {
-        res.status(201).json(location);
+        res.status(201).json({ message: 'Location was successfully added', location});
     }
     else {
         res.status(404).json(`All fields are required.`)
@@ -58,7 +58,7 @@ router.put('/:id/', restricted, async (req, res) => {
   try {
     const location = await Locations.updateLocation(id, updatedLoction);
     if (location) {
-        res.status(201).json(location);
+        res.status(201).json({ message: 'Location was successfully update', location });
     }
     else {
         res.status(404).json(`This hotel location is not available.`)
