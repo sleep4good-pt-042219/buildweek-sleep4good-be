@@ -11,7 +11,6 @@ async function fetchAllPayments() {
     return db('payments');
 }
 async function deletePayment(id) {
-    // console.log(id)
     return db('payments')
       .where({ id })
       .del()
@@ -26,7 +25,6 @@ async function insertPayment(payment) {
         });
 }
 async function getPaymentById(id) {
-    // console.log(id)
     return db('payments')
       .where({ id })
       .first()
