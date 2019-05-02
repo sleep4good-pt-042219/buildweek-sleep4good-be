@@ -5,6 +5,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Holiday Binn of Georgetown',
                 hotel_id: 2,
+                rooms: 23,
                 imageUrl: '',
                 street_address: '567 City Street',
                 city: 'Georgetown',
@@ -18,6 +19,7 @@ exports.seed = function(knex, Promise) {
             {
                 location_name: 'Shillton of Texas',
                 hotel_id: 3,
+                rooms: 13,
                 imageUrl: '',
                 street_address: '567 City Street',
                 city: 'Dallas',
@@ -31,6 +33,7 @@ exports.seed = function(knex, Promise) {
             {
                 location_name: 'Holiday Binn of Montana',
                 hotel_id: 2,
+                rooms: 29,
                 imageUrl: '',
                 street_address: '567 City Street',
                 city: 'Some Town',
@@ -44,6 +47,7 @@ exports.seed = function(knex, Promise) {
             {
                 location_name: 'Marry a Lot of Nashville',
                 hotel_id: 1,
+                rooms: 44,
                 imageUrl: '',
                 street_address: '345 Village Street',
                 city: 'Nashville',
@@ -57,6 +61,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Shillton of Miami',
                 hotel_id: 3,
+                rooms: 5,
                 imageUrl: '',
                 street_address: '8009 Town Street',
                 city: 'Miami',
@@ -70,6 +75,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: '4 Reasons of Las Vegas',
                 hotel_id: 4,
+                rooms: 123,
                 imageUrl: '',
                 street_address: '333 Simple Ct',
                 city: 'Las Vegas',
@@ -83,6 +89,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Marry a Lot of Baltimore',
                 hotel_id: 1,
+                rooms: 123,
                 imageUrl: '',
                 street_address: '333 Baltimore Pls',
                 city: 'Baltimore',
@@ -96,6 +103,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Shrimp of Detroit',
                 hotel_id: 5,
+                rooms: 53,
                 imageUrl: '',
                 street_address: '333 Detroit Rd',
                 city: 'Detroit',
@@ -109,6 +117,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Shrimp of Flint',
                 hotel_id: 5,
+                rooms: 72,
                 imageUrl: '',
                 street_address: '333 Flint Rd',
                 city: 'Flint',
@@ -122,6 +131,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Shillton of Boston',
                 hotel_id: 3,
+                rooms: 123,
                 imageUrl: '',
                 street_address: '333 Boston Rd',
                 city: 'Boston',
@@ -135,6 +145,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: '4 Reasons of Denver',
                 hotel_id: 4,
+                rooms: 303,
                 imageUrl: '',
                 street_address: '333 Denver Ct',
                 city: 'Denver',
@@ -148,6 +159,7 @@ exports.seed = function(knex, Promise) {
             { 
                 location_name: 'Holliday Binn of Oregon',
                 hotel_id: 2,
+                rooms: 153,
                 imageUrl: '',
                 street_address: '333 Oregon Ct',
                 city: 'Seattle',

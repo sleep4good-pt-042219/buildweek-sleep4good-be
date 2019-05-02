@@ -27,7 +27,7 @@ async function removeHotel(id) {
 
 async function addHotel(hotel) {
   return db('hotels')
-    .insert(hotel, ['id'])
+    .insert(hotel, 'id')
     .then(ids => {
       return getHotelById(ids[0]);
     });
