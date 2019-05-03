@@ -7,20 +7,12 @@ const request = require('supertest');
 
 describe('the server', () => {
     beforeEach(() => {
-        return db('bookings').truncate()
+        return db('locations').truncate()
     })
 
-    describe('the environment', () => {
-        it('should set setting for the environment', () => {
-            const env = process.env.DB_ENV
-    
-            expect(env).toBe('testing')
-        })
-    })
+    describe('GET /locations', function() {
 
-    describe('GET /bookings', function() {
-
-        it('responds with 200', async function() {
+        it('responds with 200 when fetching locations', async function() {
 
             const user = {
                 username: 'Jojojoj',
@@ -30,7 +22,7 @@ describe('the server', () => {
 
             const token = generateToken(user);
             const res = await request(server)
-                .get("/api/bookings")
+                .get("/api/locations")
                 .set('Accept', 'application/json')
                 .set('Authorization', token);
 
@@ -38,10 +30,10 @@ describe('the server', () => {
 
         });
 
-        it('responds with 401', async function() {
+        it('responds with 401 if token missing', async function() {
 
             const res = await request(server)
-                .get("/api/bookings")
+                .get("/api/locations")
                 .set('Accept', 'application/json')
                 .set('Authorization', null);
 
@@ -49,33 +41,36 @@ describe('the server', () => {
 
         });
 
-        it('responds with 201', async function() {
+        it('responds with 201 when post', async function() {
             const user = {
                 username: 'Jojojoj',
                 password: 'adsdadsd',
                 role_id: 3
             }
-            const booking = { 
-                location_id: 3,
+            const location = { 
+                location_name: 'Holiday Binn of Georgetown',
                 hotel_id: 2,
-                user_id: 1,
-                total: 33,
-                booking_start_date: '2014-12-30 23:18:54',
-                booking_end_date: '2006-12-30 00:38:54'
+                rooms: 23,
+                imageUrl: '',
+                street_address: '567 City Street',
+                city: 'Georgetown',
+                state: 'GA',
+                zip: 11443,
+                phone: '(717) 443-5511',
+                email: 'info@hotelbinn.com',
+                rating: 4,
+                donation_id: 1
             }
             const token = generateToken(user);
 
             const res = await request(server)
-                .post("/api/bookings")
-                .send(booking)
+                .post("/api/locations")
+                .send(location)
                 .set('Accept', 'application/json')
                 .set('Authorization', token);
 
             expect(res.status).toBe(201);
-            expect(res.body.booking.location_id).toBe(3)
-            expect(res.body.booking.total).toBe(33)
-            expect(res.body.booking.booking_end_date).toBe('2006-12-30 00:38:54')
-
+            expect(res.body.location.location_name).toBe('Holiday Binn of Georgetown')
 
         });
     });
