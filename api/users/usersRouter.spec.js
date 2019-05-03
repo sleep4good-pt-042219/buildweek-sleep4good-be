@@ -28,9 +28,6 @@ describe('the server', () => {
 
             expect(res.status).toBe(200);
             expect(res.body).toEqual([])
-        });
-
-        
+        });  
     });
-
 })
