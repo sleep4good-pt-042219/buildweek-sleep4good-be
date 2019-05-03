@@ -42,6 +42,7 @@ describe('the server', () => {
             const user = {
                 username: 'patron',
                 password: 'adsdadsd',
+                role_id: 1
             }
             const hash = bcrypt.hashSync(user.password, 10);
             user.password = hash;
@@ -56,7 +57,37 @@ describe('the server', () => {
             expect(res.body.role_id).toBe(3)
         });
 
-        
     });
+
+    // describe('post /auth/login', async function() {
+
+    //     it('responds with 200 when user logs in', async function() {
+    //         const newUser = {
+    //             username: 'patron',
+    //             password: 'patronpass',
+    //             role_id: 1
+    //         }
+    //         const hash = bcrypt.hashSync(newUser.password, 10);
+    //         newUser.password = hash;
+    //         const insert = await db('users').insert(user, 'id')
+    //         .then(ids => {
+    //           return getById(ids[0]);
+    //         });
+    //         // const user = await db('users').where({id: id}).first();
+    //         console.log(insert)
+    //         // console.log(user)
+
+
+    //         const res = await request(server)
+    //             .post("/auth/login")
+    //             .send(insert)
+    //             .set('Accept', 'application/json')
+
+    //         expect(res.status).toBe(200);
+    //         expect(res.body.username).toBe('patron')
+    //         // expect(res.body.password).toBe(hash)
+    //     });
+        
+    // });
 
 })
