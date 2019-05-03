@@ -1,20 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const Users = require('./../data/helpers/usersDbHelper');
-const jwt = require('jsonwebtoken');
-const secret = require('./../config/credentials').jwtSecret;
 
-function generateToken(user) {
-    const payload = {
-      subject: user.id,
-      username: user.username,
-      userRole: user.role_id
-    }
-    const options = {
-      expiresIn: '1d',
-    }
-    return jwt.sign(payload, secret, options)
-}
+const generateToken = require('./generateToken');
 
 router.post('/partner/register', async (req, res) => {
   let user = req.body;
