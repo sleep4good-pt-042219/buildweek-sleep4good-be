@@ -72,7 +72,6 @@ describe('the server', () => {
                 .set('Authorization', token);
 
             expect(res.status).toBe(201);
-            // console.log(res.body.booking)
             expect(res.body.booking.location_id).toBe(3)
             expect(res.body.booking.total).toBe(33)
             expect(res.body.booking.booking_end_date).toBe('2006-12-30 00:38:54')

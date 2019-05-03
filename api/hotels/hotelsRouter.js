@@ -26,10 +26,10 @@ router.post('/', restricted, authorization, async (req, res) => {
     const hotel = await Hotels.addHotel(newHotel);
 
     if (hotel) {
-        res.status(200).json(hotel);
+        res.status(201).json(hotel);
     }
     else {
-        res.status(404).json(`All hotel information is required.`)
+        res.status(401).json(`All hotel information is required.`)
     }
   } catch (e) {
     res.status(500).json(e);
@@ -58,8 +58,9 @@ router.put('/:id', restricted, authorization, async (req, res) => {
   
   try {
     const hotel = await Hotels.updateHotel(id, newHotel);
-
+console.log(hotel)
     if (hotel) {
+
         res.status(200).json({hotel, message: 'Hotel was successfully updated.'});
     }
     else {
